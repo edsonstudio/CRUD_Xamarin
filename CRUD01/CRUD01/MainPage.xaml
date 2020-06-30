@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:CRUD01"
+             mc:Ignorable="d"
+             x:Class="CRUD01.MainPage"
+             x:Name="ContentPage1">
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+        <Entry x:Name="Name" Placeholder="Digite o nome" PlaceholderColor="Red"></Entry>
+        <Entry x:Name="Address" Placeholder="Digite o endereço" PlaceholderColor="Blue"></Entry>
+        <Button Text="Save" Clicked="Save"></Button>
+        <ListView x:Name="ContactList" IsVisible="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Address}" Text="{Binding Name}">
+                        <TextCell.ContextActions>
+                            <MenuItem Text="Delete Item" Clicked="ListItem_Delete" CommandParameter="{Binding .}">
+                            </MenuItem>
+                            <MenuItem Text="Update Item" Clicked="Update" CommandParameter="{Binding .}">
+                            </MenuItem>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage> 
